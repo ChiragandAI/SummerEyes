@@ -1,0 +1,36 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environment folders
+env/
+venv/
+ENV/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# VS Code settings
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# Logs or runtime files
+*.log
+*.sqlite3
+*.db
+
+# Streamlit or Gradio runtime files
+.streamlit/config.toml
+.gradio/
+
+# Hugging Face cache
+~/.cache/huggingface/
