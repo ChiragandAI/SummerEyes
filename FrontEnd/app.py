@@ -20,12 +20,13 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 # Local utility
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from BackEnd.pdf_utils import extract_docs_and_text_from_pdf
-
+from BackEnd.speechtotext import transcribe
 
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=250)
 st.session_state.vectordatabase = FAISS.load_local("SummerEyes_local_db",embeddings=embedding,allow_dangerous_deserialization=True)
 st.session_state.retriever = st.session_state.vectordatabase.as_retriever(kwargs={"k":5})
+
 # Load environment variables
 load_dotenv()
 
@@ -74,15 +75,12 @@ class RAG():
 
     def search_db(self,question:str,retriever):
         retrievals = retriever.invoke(question)
-        
         context = "\n".join([ret.page_content for ret in retrievals])
         return context 
 
     
     def search_the_web(self,urls:list):
-
         urls = [url for url in urls]
-
         docs_scrape = [WebBaseLoader(url).scrape() for url in urls]
         docs_load = [WebBaseLoader(url).load() for url in urls]
         # docs_list = [item for sublist in docs for item in sublist]
@@ -90,7 +88,6 @@ class RAG():
         docs_load[0][0].page_content = docs_scrape
         # docs_list = Document(page_content=docs_list,metadata={})
         docs_list = docs_load[0][0]
-        
         return [docs_list]
     
     def extract_from_pdfs(self,path:str):
@@ -112,29 +109,22 @@ class RAG():
         )
         vectordatabase.save_local("SummerEyes_local_db")
         
-        retriever = vectordatabase.as_retriever(search_kwargs={'k': 5
-                                                               })
-        
+        retriever = vectordatabase.as_retriever(search_kwargs={'k': 5})
         return retriever,vectordatabase
     
     def invoke(self,variables:dict):
         answer = llm(variables,True)
         return answer
     
-
 def llm(inp,_stream):
     return client.chat.completions.create(
-            #
             # Required parameters
-            #
             messages=inp,
 
             # The language model which will generate the completion.
             model=MODEL_NAME,
 
-            #
             # Optional parameters
-            #
 
             # Controls randomness: lowering results in less random completions.
             # As the temperature approaches zero, the model will become deterministic
@@ -185,17 +175,13 @@ with st.sidebar:
     uploaded_file = st.audio_input('Speak')
     l,r = st.columns(2)
     if l.button('',icon=':material/description:') and uploaded_file:
-        files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
-        response_new = requests.post("http://localhost:8000/transcribe", files=files)
-        result = response_new.json()
-
+        files = {"filename": uploaded_file.name,"file": uploaded_file.getvalue()}
+        result = transcribe(files) 
         st.session_state.audio_text = result["text"]
         st.session_state.audio_processed = True
         if len(st.session_state.audio_text) <= 100:
             st.write('Transcription')
             st.write(st.session_state.audio_text)
-        # st.rerun()
-    
     if r.button('clear'):
         st.session_state.messages = []
     if st.checkbox('Get Summary'):
@@ -215,7 +201,6 @@ with st.sidebar:
             with st.expander(pdf['title']):
                 st.write(pdf['text'])
 
-    
 # Show chat history
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
@@ -227,15 +212,9 @@ for message in st.session_state.messages:
                 style="background:none;border:none;cursor:pointer;font-size:1em;">📋</button>
     """, height=30)
 
-
 # If we got a transcription from audio, respond to that
 if st.session_state.audio_text:
     user_text = st.session_state.audio_text
-
-    # Display user message
-    # with st.chat_message("user"):
-    #     st.markdown(user_text)
-    # st.session_state.messages.append({"role": "user", "content": user_text})
 
     # Get LLM response
     messages = [{"role": "system", "content": "You are a helpful assistant, Your name is SummerEyes, your core task is to summarise"}] + [{"role": "user", "content": user_text}]
@@ -250,9 +229,6 @@ if st.session_state.audio_text:
     # Clear processed audio text
     st.session_state.audio_text = None
     
-    
-
-
 if prompt :=st.chat_input("Summerize with SummerEyes",accept_file=True):
     # st.write(prompt)
     if prompt['files'] != []:
@@ -317,8 +293,6 @@ if prompt :=st.chat_input("Summerize with SummerEyes",accept_file=True):
                 style="background:none;border:none;cursor:pointer;font-size:1em;">📋</button>
     """, height=30)
             
-            
-        
     else:
         if st.session_state.rag:
             syst = [{"role": "system", "content": f"You are a Prompt Optimisation assistant, You Re-Structure the given prompt for vector database search so that relevant keywords are included which might be missing from the original prompt"}]
