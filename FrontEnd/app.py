@@ -64,7 +64,7 @@ st.markdown("""
     </style>
 
     <div class="sticky-title">
-        SummerEyes
+        SummerEyes.ai
     </div>
 """, unsafe_allow_html=True)
 
@@ -223,7 +223,13 @@ if st.session_state.audio_text:
 
     # Display assistant response
     with st.chat_message("assistant"):
-        st.markdown(assistant_reply)
+        l,r = st.columns([12,1])
+        l.markdown(assistant_reply)
+        with r:
+            st.components.v1.html(f"""
+    <button onclick="navigator.clipboard.writeText(`{assistant_reply}`)"
+            style="background:none;border:none;cursor:pointer;font-size:1em;">📋</button>
+""", height=30)
     st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
 
     # Clear processed audio text
