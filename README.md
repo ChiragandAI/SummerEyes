@@ -38,7 +38,7 @@ Use it to summarize meetings, articles, or spoken thoughts—hands-free and cont
 ## Demo
 
 ```markdown
-![Landing Page](https://github.com/ChiragandAI/SummerEyes/blob/main/screenshots/1_main_interface.jpg
+![Landing Page](https://github.com/ChiragandAI/SummerEyes/blob/main/screenshots/1_main_interface.jpg?raw=true
 )
 ![Uploading pdf](screenshots/2_upload_a_pdf.jpg)
 ![Summarisation](screenshots/3_pdf_summarisation.jpg)
