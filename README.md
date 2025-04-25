@@ -38,7 +38,8 @@ Use it to summarize meetings, articles, or spoken thoughts—hands-free and cont
 ## Demo
 
 ```markdown
-![Landing Page](screenshots/1_main_interface.jpg)
+![Landing Page](https://github.com/your-username/your-repo-name/blob/main/screenshots/1_main_interface.jpg
+)
 ![Uploading pdf](screenshots/2_upload_a_pdf.jpg)
 ![Summarisation](screenshots/3_pdf_summarisation.jpg)
 ![Download Summary + Save to Database](screenshots/4_download_summary.jpg)
