@@ -37,15 +37,14 @@ Use it to summarize meetings, articles, or spoken thoughts—hands-free and cont
 
 ## Demo
 
-```markdown
-![Landing Page](https://github.com/ChiragandAI/SummerEyes/blob/main/screenshots/1_main_interface.jpg?raw=true
-)
-![Uploading pdf](screenshots/2_upload_a_pdf.jpg)
-![Summarisation](screenshots/3_pdf_summarisation.jpg)
-![Download Summary + Save to Database](screenshots/4_download_summary.jpg)
-![Response without RAG](screenshots/5_response_without_RAG.jpg)
-![Response with RAG](screenshots/6_response_with_RAG.jpg)
-![Audio Input + Summarisation](screenshots/7_audio_input_summarisation.jpg)
-![Summarisation + Query](screenshots/8_summarise_along_query.jpg)
-![Query Resolution + Summarisation](screenshots/9_downloadable_pdf_query_ressolution.jpg)
+![Landing Page](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/1_main_interface.jpg)
+![Uploading PDF](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/2_upload_a_pdf.jpg)
+![Summarisation](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/3_pdf_summarisation.jpg)
+![Download Summary + Save to Database](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/4_download_summary.jpg)
+![Response without RAG](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/5_response_without_RAG.jpg)
+![Response with RAG](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/6_response_with_RAG.jpg)
+![Audio Input + Summarisation](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/7_audio_input_summarisation.jpg)
+![Summarisation + Query](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/8_summarise_along_query.jpg)
+![Query Resolution + Summarisation](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/9_downloadable_pdf_query_ressolution.jpg)
+
 
