@@ -20,6 +20,7 @@ Use it to summarize meetings, articles, or spoken thoughts—hands-free and cont
 - Streamlit (Frontend)
 - Whisper (Speech-to-Text)
 - LLaMA 4 (LLM)
+- Groq
 - LangChain
 - Retrieval-Augmented Generation (RAG)
 - Deployed on Streamlit Cloud
