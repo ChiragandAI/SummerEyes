@@ -36,15 +36,32 @@ Use it to summarize meetings, articles, or spoken thoughts—hands-free and cont
 ---
 
 ## Demo
-
+### Landing Page
 ![Landing Page](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/1_main_interface.jpg)
+
+### Uploading PDF
 ![Uploading PDF](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/2_upload_a_pdf.jpg)
+
+### Summarisation
 ![Summarisation](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/3_pdf_summarisation.jpg)
+
+### Download Summary + Save to Database
 ![Download Summary + Save to Database](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/4_download_summary.jpg)
+
+### Response without RAG
 ![Response without RAG](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/5_response_without_RAG.jpg)
+
+### Response with RAG
 ![Response with RAG](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/6_response_with_RAG.jpg)
+
+### Audio Input + Summarisation
 ![Audio Input + Summarisation](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/7_audio_input_summarisation.jpg)
+
+### Summarisation + Query
 ![Summarisation + Query](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/8_summarise_along_query.jpg)
+
+### Query Resolution + Summarisation
 ![Query Resolution + Summarisation](https://raw.githubusercontent.com/ChiragandAI/SummerEyes/main/screenshots/9_downloadable_pdf_query_ressolution.jpg)
+
 
 
